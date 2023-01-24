@@ -1,0 +1,26 @@
+name: scheduled_run
+
+on:
+  schedule:
+    - cron:  '0 13 * * *'
+
+env:
+  DBT_PROFILES_DIR: ./
+  MSSQL_USER: ${{ secrets.MSSQL_USER }}
+  MSSQL_PROD: ${{ secrets.MSSQL_PROD }}
+  MSSQL_LOGIN: ${{ secrets.MSSQL_LOGIN }}
+
+jobs:
+  scheduled_run:
+    name: scheduled_run
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+      
+      - name: Get dependencies # ok guess I need this anyway
+        run: dbt deps --target prod
+
+      - name: Run dbt build
+        run: dbt build --target prod

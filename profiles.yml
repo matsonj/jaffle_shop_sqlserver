@@ -22,3 +22,14 @@ jaffle_shop:
       database: test_db
       threads: 24
       trust_cert: true
+    prod:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: "{{ env_var('MSSQL_PROD') }}"
+      port: 1433
+      schema: dbo
+      user: "{{ env_var('MSSQL_USER') }}"
+      password: "{{ env_var('MSSQL_LOGIN') }}"
+      database: Operations
+      threads: 24
+      trust_cert: true
