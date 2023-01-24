@@ -1,4 +1,4 @@
-jaffle_shop:
+jaffle_shop_duckdb:
 
   target: dev
   outputs:
@@ -6,3 +6,19 @@ jaffle_shop:
       type: duckdb
       path: 'jaffle_shop.duckdb'
       threads: 24
+
+jaffle_shop:
+
+  target: dev
+  outputs: 
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: localhost
+      port: 1433
+      schema: dbo
+      user: SA
+      password: fTw68nEsJM
+      database: test_db
+      threads: 24
+      trust_cert: true
