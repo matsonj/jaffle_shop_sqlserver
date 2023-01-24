@@ -17,9 +17,9 @@ jobs:
 
     steps:
       - name: Check out
-        uses: actions/checkout@master
+        uses: actions/checkout@duckdb
       
-      - name: Get dependencies # ok guess I need this anyway
+      - name: Get dependencies
         run: dbt deps --target prod
 
       - name: Run dbt build
