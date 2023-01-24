@@ -30,6 +30,6 @@ jaffle_shop:
       schema: dbo
       user: "{{ env_var('MSSQL_USER') }}"
       password: "{{ env_var('MSSQL_LOGIN') }}"
-      database: Operations
+      database: prod_db
       threads: 24
       trust_cert: true
