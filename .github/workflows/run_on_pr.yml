@@ -1,0 +1,27 @@
+name: run_on_pr
+
+on:
+  pull_request:
+    branches:
+      - master
+
+env:
+  DBT_PROFILES_DIR: ./
+  MSSQL_USER: ${{ secrets.MSSQL_USER }}
+  MSSQL_PROD: ${{ secrets.MSSQL_PROD }}
+  MSSQL_LOGIN: ${{ secrets.MSSQL_LOGIN }}
+
+jobs:
+  run_on_pr:
+    name:  run_on_pr
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+      
+      - name: Get dependencies # ok guess I need this anyway
+        run: dbt deps --target prod
+
+      - name: Run dbt build
+        run: dbt build --target prod
