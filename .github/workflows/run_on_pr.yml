@@ -3,7 +3,7 @@ name: run_on_pr
 on:
   pull_request:
     branches:
-      - master
+      - duckdb
 
 env:
   DBT_PROFILES_DIR: ./
@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Check out
-        uses: actions/checkout@master
+        uses: actions/checkout@duckdb
       
       - name: Get dependencies # ok guess I need this anyway
         run: dbt deps --target prod

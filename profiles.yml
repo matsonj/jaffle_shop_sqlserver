@@ -1,12 +1,3 @@
-jaffle_shop_duckdb:
-
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: 'jaffle_shop.duckdb'
-      threads: 24
-
 jaffle_shop:
 
   target: dev
@@ -33,3 +24,12 @@ jaffle_shop:
       database: prod_db
       threads: 24
       trust_cert: true
+
+jaffle_shop_duckdb:
+
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'jaffle_shop.duckdb'
+      threads: 24
